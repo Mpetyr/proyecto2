@@ -6,6 +6,7 @@
       <h1>Login</h1>
       <label>Correo</label>
       <input
+        id="email"
         type="email"
         name="email"
         placeholder="Correo"
@@ -13,12 +14,13 @@
       />
       <label>Contraseña</label>
       <input
+        id="clave"
         type="password"
         name="password"
         placeholder="Contraseña"
         required="required"
       />
-      <button type="submit" onclick="login()">Ingresar</button>
+      <button id="ingresar" type="submit" onclick="login()" value="Ingresar">Ingresar</button>
       <a href="register">¿No tiene una cuenta?</a>
     </form>
   </div>
