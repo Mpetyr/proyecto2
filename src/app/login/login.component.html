@@ -7,6 +7,7 @@
       <label>Correo</label>
       <input
         id="email"
+        [(ngModel)]="email"
         type="email"
         name="email"
         placeholder="Correo"
@@ -15,13 +16,17 @@
       <label>Contraseña</label>
       <input
         id="clave"
+        [(ngModel)]="password"
         type="password"
         name="password"
         placeholder="Contraseña"
         required="required"
       />
-      <button id="ingresar" type="submit" onclick="login()" value="Ingresar">Ingresar</button>
+      <button id="ingresar" type="submit" (click)="login()">Ingresar</button>
       <a href="register">¿No tiene una cuenta?</a>
+      <div >
+      <label id="mensaje">Usuario o contraseña incorrecta</label>
+      </div>
     </form>
   </div>
 </main>
