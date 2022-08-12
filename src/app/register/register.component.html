@@ -2,7 +2,7 @@
 
 <main class="fondo">
 <div class="register">
-    <form class="custom-form" method="post">
+    <form class="custom-form" method="post" [formGroup]="registerForm" (ngSubmit)="register()">
       <h1>Registro</h1>
       <label>Correo</label>
       <input
@@ -10,6 +10,7 @@
         name="email"
         placeholder="Correo"
         required="required"
+        formControlName="email"
       />
       <label>Contraseña</label>
       <input
@@ -17,6 +18,7 @@
         name="password"
         placeholder="Contraseña"
         required="required"
+        formControlName="password"
       />
       <label>Repita la contraseña</label>
       <input
@@ -24,8 +26,9 @@
         name="password"
         placeholder="Repita la contraseña"
         required="required"
+        formControlName="repeatPassword"
       />
-      <button type="submit" (click)="register()">Registrarse</button>
+      <button type="submit">Registrarse</button>
       <a href="/">¿Ya tiene cuenta?</a>
     </form>
   </div>

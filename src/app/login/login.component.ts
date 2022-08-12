@@ -1,5 +1,7 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -9,21 +11,36 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent{
 
-  email: string = "";
-  password: string = "";
+  public loginForm !: FormGroup
 
-  constructor(private route:Router) { }
+  constructor(private route:Router, private formBuilder: FormBuilder, private http: HttpClient) { }
+
+
+  ngOnInit(): void{
+    this.loginForm = this.formBuilder.group({
+      email:[''],
+      password:['']
+    })
+  }
 
   login() {
+    
     let mostrar = document.getElementById("mensaje");
-    let vacio = document.getElementById("vacio");
-    console.log(this.email);
-    console.log(this.password);
-    if (this.email === "prueba@gmail.com" && this.password === "prueba") {
-      
-      this.route.navigate(['home']);
-    }else if(this.email != "prueba@gmail.com" && this.password != "prueba" && mostrar != null){
-      mostrar.style.visibility = "visible";
-    }
+    this.http.get<any>("http://localhost:3000/registerUsers")
+    .subscribe(res=>{
+      const user = res.find((a:any)=>{
+        return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password
+      });
+      if (user) {
+        alert("Inicio de sesion correcto");
+        this.loginForm.reset();
+        this.route.navigate(['home']);
+      }else if(mostrar != null){
+        mostrar.style.visibility = "visible";
+      }
+    },err=>{
+      alert("Algo salio mal")
+    })
+
   }
 }

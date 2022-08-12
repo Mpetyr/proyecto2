@@ -2,27 +2,27 @@
 <main class="fondo">
   
 <div class="login">
-    <form class="custom-form" method="post">
+    <form class="custom-form" method="post" [formGroup]="loginForm" (ngSubmit)="login()">
       <h1>Login</h1>
       <label>Correo</label>
       <input
         id="email"
-        [(ngModel)]="email"
         type="email"
         name="email"
         placeholder="Correo"
         required="required"
+        formControlName="email"
       />
       <label>Contraseña</label>
       <input
         id="clave"
-        [(ngModel)]="password"
         type="password"
         name="password"
         placeholder="Contraseña"
         required="required"
+        formControlName="password"
       />
-      <button id="ingresar" type="submit" (click)="login()">Ingresar</button>
+      <button id="ingresar" type="submit">Ingresar</button>
       <a href="register">¿No tiene una cuenta?</a>
       <div >
       <label id="mensaje">Usuario o contraseña incorrecta</label>

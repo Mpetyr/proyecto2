@@ -1,0 +1,22 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "registerUsers": [
+    {
+      "email": "",
+      "password": "",
+      "repeatPassword": "",
+      "id": 1
+    }
+  ],
+  "reservas": [
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

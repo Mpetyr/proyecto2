@@ -63,6 +63,14 @@ export class CalendarComponent implements OnInit {
   }
 
   clickDay(day: { value: any; }) {
+
+    if (day.value === 17) {
+      alert("fecha reservada");
+    }else if (day.value === 18) {
+      alert("No se puede resrvar");
+    }else if (day.value != 17 && day.value != 18) {
+      alert("Fecha disponible");
+    }
     const monthYear = this.dateSelect.format('YYYY-MM')
     const parse = `${monthYear}-${day.value}`
     const objectDate = moment(parse)
