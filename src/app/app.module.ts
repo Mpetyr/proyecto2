@@ -13,6 +13,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { ReservaComponent } from './reserva/reserva.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
     HomeComponent,
     NavbarComponent,
     FooterComponent,
-    CalendarComponent
+    CalendarComponent,
+    ReservaComponent
   ],
   imports: [
     BrowserModule,

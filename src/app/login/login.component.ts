@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -32,11 +33,19 @@ export class LoginComponent{
         return a.email === this.loginForm.value.email && a.password === this.loginForm.value.password
       });
       if (user) {
-        alert("Inicio de sesion correcto");
+        Swal.fire(
+          'Exitoso',
+          'Inicio de sesion correcto',
+          'success'
+        )
         this.loginForm.reset();
         this.route.navigate(['home']);
       }else if(mostrar != null){
-        mostrar.style.visibility = "visible";
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Usuario o contraseña incorrecto',
+        })
       }
     },err=>{
       alert("Algo salio mal")

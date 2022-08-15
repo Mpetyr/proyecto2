@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment  from 'moment/moment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-calendar',
@@ -27,7 +28,7 @@ export class CalendarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.getDaysFromDate(11, 2020)
+    this.getDaysFromDate(11, 2022)
   }
 
   getDaysFromDate(month: any, year: any) {
@@ -65,11 +66,19 @@ export class CalendarComponent implements OnInit {
   clickDay(day: { value: any; }) {
 
     if (day.value === 17) {
-      alert("fecha reservada");
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Fecha reservada',
+      })
     }else if (day.value === 18) {
-      alert("No se puede resrvar");
+      Swal.fire('No se puede reservar')
     }else if (day.value != 17 && day.value != 18) {
-      alert("Fecha disponible");
+      Swal.fire(
+        'Exitoso',
+        'Fecha disponible',
+        'success'
+      )
     }
     const monthYear = this.dateSelect.format('YYYY-MM')
     const parse = `${monthYear}-${day.value}`

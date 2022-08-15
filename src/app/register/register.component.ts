@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -28,7 +29,11 @@ export class RegisterComponent implements OnInit {
 
     this.http.post<any>("http://localhost:3000/registerUsers", this.registerForm.value)
     .subscribe(res =>{
-      alert("Registro realizado");
+      Swal.fire(
+        'Exitoso',
+        'Registro correcto',
+        'success'
+      )
       this.registerForm.reset();
       this.route.navigate(['/']);
     },err=>{
